@@ -13,4 +13,4 @@ function createWindow(width, height) {
 /** When the app is ready, we can create the window */
 app.whenReady().then(() => {
     createWindow(1280, 720);
-})
+});

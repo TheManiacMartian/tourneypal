@@ -1,24 +1,13 @@
 
 @use '@angular/material' as mat;
+@use 'app/styles/m3-theme.scss';
 
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
-// Define your theme with color palettes, typography and density
-
-$theme: mat.m2-define-theme((
-  color: (
-    theme-type: dark,
-    primary: mat.$magenta-violet,
-  ),
-  typography: (
-    brand-family: 'Comic Sans',
-    bold-weight: 900
-  ),
-  density: (
-    scale: -1
-  )
-));
+html {
+  @include mat.all-component-themes(m3-theme.$dark-theme);
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

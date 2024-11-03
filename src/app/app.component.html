@@ -1,9 +1,10 @@
 
-<div class="base">
-  <section class="navbar">
+<mat-sidenav-container class = "base">
+  <mat-sidenav #drawer mode="push" role="navigation">
     <app-nav></app-nav> <!-- Navigation for the app -->
-  </section>
-  <section>
+  </mat-sidenav>
+  <mat-sidenav-content role="main">
+    <button mat-fab (click)="drawer.toggle()"> Navigation </button>
     <router-outlet></router-outlet>
-  </section>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

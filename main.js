@@ -1,5 +1,7 @@
 /** The main file that initializes electron. */
 const { app, BrowserWindow } = require('electron');
+require('dotenv').config();
+
 
 /** Create new desktop window.
  * @param width the width of the application window.

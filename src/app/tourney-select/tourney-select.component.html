@@ -1,0 +1,13 @@
+<div class="selector">
+    <mat-form-field>
+        <mat-label>Select Tournament</mat-label>
+        <mat-select [(value)]="testSelected" panelWidth="100"> 
+            <mat-option>None</mat-option>
+            @for (tournament of tournaments; track tournament){
+                <mat-option [value]="tournament.value">{{tournament.viewValue}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    
+</div>
+

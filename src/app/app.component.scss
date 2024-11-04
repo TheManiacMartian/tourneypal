@@ -2,17 +2,31 @@
 {
     position: fixed;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: 100%;
     width: 100%;
-    margin: 0;
-    left: 0;
-    top: 0;
-    /*color: #c7c7c7;
-    font-family: "Roboto";*/
+    background-color: #181c21;
 }
 
 .navbar
 {
     width: 125px;
+}
+
+.nav-button
+{
+    position: fixed;
+    left:2.5%;
+}
+
+.header
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 60px;
+    background-color: #101419;
 }

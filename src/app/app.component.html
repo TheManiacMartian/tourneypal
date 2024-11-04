@@ -4,7 +4,10 @@
     <app-nav></app-nav> <!-- Navigation for the app -->
   </mat-sidenav>
   <mat-sidenav-content role="main">
-    <button mat-fab (click)="drawer.toggle()"> Navigation </button>
+    <div class="header">
+      <button mat-fab (click)="drawer.toggle()" class="nav-button"> Navigation </button>
+      <app-tourney-select></app-tourney-select>
+    </div>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

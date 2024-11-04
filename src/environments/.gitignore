@@ -1,0 +1,8 @@
+# Ignoring all files in current directory(`src/environments`)
+# to not occasionally commit production environment
+*
+
+# But not example environment, so that developer could copy
+# and fill it on his machine
+!environment.example.ts
+!.gitignore

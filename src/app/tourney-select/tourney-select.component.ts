@@ -2,11 +2,37 @@ import { Apollo, gql } from 'apollo-angular';
 import { Component, OnInit } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select'
 import { MatFormField } from '@angular/material/form-field'
+import { UserService } from '../user.service';
 
-interface Tournament{
-  value: string;
-  viewValue: string;
+import { TourneyManager } from '../tourney-manager';
+
+interface TournamentOption{
+  id: string;
+  name: string;
+  slug: string;
 }
+
+const GET_ADMIN_TOURNEYS = gql`
+query GetAdminTournaments($perPage: Int!, $currentUserId: ID!) {
+  user(id: $currentUserId){
+    tournaments(
+      query:{
+        perPage: $perPage,
+        filter: {
+          tournamentView: "admin"
+        }
+      }
+    ) {
+      nodes {
+        id
+        name
+        slug
+      }
+    }
+  }
+}
+`
+
 
 @Component({
   selector: 'app-tourney-select',
@@ -16,43 +42,37 @@ interface Tournament{
   styleUrl: './tourney-select.component.scss'
 })
 export class TourneySelectComponent implements OnInit {
-  testSelected = null;
-  tournaments: Tournament[] = [];
+  selectedTournamentSlug = '';
+  tournaments: TournamentOption[] = [];
 
-  constructor(private readonly apollo: Apollo) {}
+  constructor(private readonly apollo: Apollo, private readonly user: UserService) {}
 
-  ngOnInit(): void {
+  async ngOnInit() {
     console.log("Getting tournaments");
 
+    // wait for auth id to be defined
+    const authUser = await this.user.getAuthUser();
+    console.log(authUser.currentUser.id);
+    
     // watch tournament find query
     this.apollo.watchQuery({
-      query: gql`
-        query GetAllTournaments($perPage: Int!, $cCode: String!) {
-          tournaments(query: {
-            perPage: $perPage
-            filter: {
-              countryCode: $cCode
-            }
-          }) {
-            nodes {
-              id
-              name
-              slug
-            }
-          }
-        }
-      `,
+      query: GET_ADMIN_TOURNEYS,
       variables: {
-        "perPage": 100,
-        "cCode": "CA"
+        "perPage": 50,
+        "currentUserId": authUser.currentUser.id
       }
     })
     .valueChanges.subscribe((result: any) => {
-      result.data?.tournaments.nodes.forEach((tournament: any) => {
+      // add each tournament to the tournaments list
+      result.data?.user.tournaments.nodes.forEach((tournament: any) => {
         console.log(`found ${tournament.name}`);
-        this.tournaments.push({value: tournament.id, viewValue: tournament.name});
+        this.tournaments.push({id: tournament.id, name: tournament.name, slug: tournament.slug});
       });
-      
     });
+  }
+
+  updateTourney()
+  {
+    TourneyManager.setTourney(this.selectedTournamentSlug);
   }
 }

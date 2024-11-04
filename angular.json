@@ -25,7 +25,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/app/styles/m3-theme.scss",
+              "src/styles/m3-theme.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -91,7 +91,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/app/styles/m3-theme.scss",
+              "src/styles/m3-theme.scss",
               "src/styles.scss"
             ],
             "scripts": []

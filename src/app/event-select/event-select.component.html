@@ -1,0 +1,13 @@
+<div class="selector">
+    <mat-form-field>
+        <mat-label>Select Event</mat-label>
+        <mat-select [(value)]="selectedEventId" (selectionChange)="updateEvent()" panelWidth="100"> 
+            <mat-option>None</mat-option>
+            @for (event of events; track event){
+                <mat-option [value]="event.id">{{event.name}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    
+</div>
+

@@ -1,0 +1,20 @@
+<div class="card">
+    @if(hasDisplayScore){
+        <div class="p1Display">
+            <h3 class="p1Name">{{p1Name}}</h3>
+            <h1 class="p1Score">{{p1Score}}</h1>
+        </div>
+        <p class="round">{{set.fullRoundText}}</p>
+        <div class="p2Display">
+            <h3 class="p2Name">{{p2Name}}</h3>
+            <h1 class="p2Score">{{p2Score}}</h1>
+        </div>
+    }
+    @else{
+        <div class="round">
+            <p>{{set.fullRoundText}}</p>
+            <p>Set not started.</p>
+        </div>
+    }
+    
+</div>

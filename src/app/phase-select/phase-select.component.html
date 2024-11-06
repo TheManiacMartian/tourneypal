@@ -1,0 +1,13 @@
+<div class="selector">
+    <mat-form-field>
+        <mat-label>Select Phase</mat-label>
+        <mat-select [(value)]="selectedPhaseId" (selectionChange)="updatePhase()" panelWidth="100"> 
+            <mat-option>None</mat-option>
+            @for (phase of phases; track phase){
+                <mat-option [value]="phase.id">{{phase.name}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    
+</div>
+

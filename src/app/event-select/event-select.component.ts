@@ -5,9 +5,11 @@ import { MatSelectModule } from '@angular/material/select'
 import { MatFormField } from '@angular/material/form-field'
 
 
+
 interface EventOption{
   name: string;
   id: number;
+  slug: string;
 }
 
 const ALL_EVENTS_QUERY = gql`
@@ -16,6 +18,7 @@ query AllEvents($slug: String!){
     events{
       name
       id
+      slug
     }
   }
 }
@@ -30,7 +33,7 @@ query AllEvents($slug: String!){
 })
 export class EventSelectComponent implements OnInit{
 
-  selectedEventId = '';
+  selectedEventSlug = '';
   events: EventOption[] = [];
 
 
@@ -43,7 +46,7 @@ export class EventSelectComponent implements OnInit{
       if(!tourneySlug)
       {
         // empty string, return and clear events
-        this.selectedEventId = '';
+        this.selectedEventSlug = '';
         this.events = [];
 
         return;
@@ -72,14 +75,14 @@ export class EventSelectComponent implements OnInit{
       // add each event to the events list
       result.data?.tournament.events.forEach((event: any) => {
         console.log(`found ${event.name}`);
-        this.events.push({id: event.id, name: event.name});
+        this.events.push({id: event.id, name: event.name, slug: event.slug});
       });
     });
   }
 
   updateEvent()
   {
-
+    TourneyManager.setEvent(this.selectedEventSlug);
   }
 
 }

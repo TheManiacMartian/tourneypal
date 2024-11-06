@@ -1,0 +1,53 @@
+.card
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 700px;
+
+    background-color: #383c42;
+    padding: 15px;
+    border-radius: 25px;
+}
+
+.round
+{
+    width: 200px;
+    align-self: center;
+    text-align: center;
+    height: 75px;
+}
+
+.p1Display
+{
+    width: 250px;
+    align-self:flex-start;
+}
+
+.p2Display
+{
+    width: 250px;
+    align-self:flex-end;
+}
+
+.p1Name
+{
+    text-align: center;
+}
+
+.p1Score
+{
+    text-align: right;
+    color: #3294f0;
+}
+
+.p2Name
+{
+    text-align: center;
+}
+
+.p2Score
+{
+    text-align: left;
+    color: #3294f0;
+}

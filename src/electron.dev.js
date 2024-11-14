@@ -11,7 +11,11 @@ let window;
  */
 const createWindow = () => {
     setTimeout(() => {
-    window = new BrowserWindow({width: 1280, height: 720, icon:'./src/icon.ico'});
+    window = new BrowserWindow({width: 1280, height: 720, icon:'./src/icon.ico', 
+        webPreferences: {
+            enableRemoteModule: true
+        }
+    });
     //window.loadFile('dist/tourneypal/browser/index.html');
     window.loadURL(url.format({pathname: 'localhost:4200',protocol: 'http:',slashes: true}));
     

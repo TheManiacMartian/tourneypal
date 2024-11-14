@@ -1,5 +1,5 @@
-<div class="card">
-    @if(hasDisplayScore){
+<div [ngClass]="{'card' : winner === '', 'cardP1Win' : winner === '1', 'cardP2Win' : winner === '2'}">
+    @if(setComplete){
         <div class="p1Display">
             <h3 class="p1Name">{{p1Name}}</h3>
             <h1 class="p1Score">{{p1Score}}</h1>
@@ -13,7 +13,7 @@
     @else{
         <div class="round">
             <p>{{set.fullRoundText}}</p>
-            <p>Set not started.</p>
+            <p>Set is empty.</p>
         </div>
     }
     

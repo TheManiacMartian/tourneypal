@@ -8,6 +8,41 @@
     background-color: #383c42;
     padding: 15px;
     border-radius: 25px;
+
+    outline-width: 2px;
+    outline-color: #74777e;
+}
+
+.cardP1Win
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 700px;
+
+    background: rgb(0,97,167);
+    background: linear-gradient(90deg, rgba(0,97,167,1) 0%, rgba(56,60,66,1) 50%); 
+    padding: 15px;
+    border-radius: 25px;
+
+    outline-width: 2px;
+    outline-color: #5593dd;
+}
+
+.cardP2Win
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 700px;
+
+    background: rgb(56,60,66);
+    background: linear-gradient(90deg, rgba(56,60,66,1) 50%, rgba(0,97,167,1) 100%); 
+    padding: 15px;
+    border-radius: 25px;
+
+    outline-width: 2px;
+    outline-color: #5593dd;
 }
 
 .round

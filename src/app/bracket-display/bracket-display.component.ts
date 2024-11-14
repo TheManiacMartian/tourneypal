@@ -25,6 +25,14 @@ query AllSets($phaseId: ID!){
         displayScore
         slots{
           id
+          standing{
+            stats{
+              score{
+                value
+                displayValue
+              }
+            }
+          }
           entrant{
             id
             name
@@ -91,9 +99,12 @@ export class BracketDisplayComponent implements OnInit {
       // add each set to the sets list
       for(var set in sets)
       {
-        console.log(sets[set].slots);
+        console.log(sets[set]);
         this.sets.push({id: sets[set].id, slots: sets[set].slots, fullRoundText: sets[set].fullRoundText, displayScore: sets[set].displayScore})
       }
+
+      // reverse the list for the bracket view
+      //this.sets.reverse();
     });
   }
 }

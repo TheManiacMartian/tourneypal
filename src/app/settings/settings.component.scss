@@ -1,0 +1,23 @@
+.settings-input
+{
+    width: 100%;
+    padding-top: 15px;
+    display: flex;
+    justify-content: center;
+
+    mat-form-field
+    {
+        width: 50%;
+    }
+}
+
+.path-field
+{
+    button
+    {
+        position: absolute;
+        right: 0;
+        bottom: 15%;
+        z-index: 10;
+    }
+}

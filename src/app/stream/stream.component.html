@@ -1,1 +1,76 @@
-<p>stream works!</p>
+<div class="players">
+    <div class="player">
+        <mat-card appearance="outlined">
+            <mat-card-content class="player-info">
+                <mat-form-field class="playername-field" floatLabel="always">
+                    <mat-label>Player Name</mat-label>
+                    <input matInput [value]="player1Data.name">
+                </mat-form-field>
+                <mat-form-field class="pronouns-field">
+                    <mat-label>Pronouns</mat-label>
+                    <input matInput [value]="player1Data.pronouns" [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        @for (option of pronounOptions; track option)
+                        {
+                            <mat-option [value]="option">{{option}}</mat-option>
+                        }
+                    </mat-autocomplete>
+                </mat-form-field>
+                <mat-form-field class="score">
+                    <input matInput type="number" placeholder="0" type="number" min="0" [value]="player1Data.score">
+                </mat-form-field>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="player">
+        <mat-card appearance="outlined">
+            <mat-card-content>
+                <div class="player-info">
+                    <mat-form-field class="playername-field" floatLabel="always">
+                        <mat-label>Player Name</mat-label>
+                        <input matInput [value]="player2Data.name">
+                    </mat-form-field>
+                    <mat-form-field class="pronouns-field">
+                        <mat-label>Pronouns</mat-label>
+                        <input matInput [value]="player2Data.pronouns" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            @for (option of pronounOptions; track option)
+                            {
+                                <mat-option [value]="option">{{option}}</mat-option>
+                            }
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <mat-form-field class="score">
+                        <input matInput type="number" placeholder="0" type="number" min="0" [value]="player2Data.score">
+                    </mat-form-field>
+                </div>
+                
+                
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+<div class="tourney-info">
+    <mat-form-field>
+        <mat-label>Tournament Name</mat-label>
+        <input matInput [value]="tournamentName">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Event Name</mat-label>
+        <input matInput [value]="eventName">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Round</mat-label>
+        <input matInput [value]="roundName">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Best Of</mat-label>
+        <input matInput type="number" min="0" [value]="bestOf">
+    </mat-form-field>
+</div>
+
+<div class="update-button">
+    <button mat-fab extended><mat-icon>upload_file</mat-icon>Update File</button>
+</div>

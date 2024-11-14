@@ -1,6 +1,6 @@
 // Copy this file and rename it to 'environment.development.ts' to add a development key
 
-export class Environment{
+export const environment = {
     //Start.gg API KEY
-    static STARTGG_API_KEY='place your key here';
+    STARTGG_API_KEY: 'place your key here'
 }

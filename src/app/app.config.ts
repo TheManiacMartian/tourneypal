@@ -11,7 +11,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { ApolloLink, InMemoryCache } from '@apollo/client/core';
 import { setContext } from '@apollo/client/link/context';
 
-import { Environment } from '../environments/environment.example';
+import { environment } from '../environments/environment.example';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), provideAnimationsAsync(), provideAnimationsAsync(),provideHttpClient(),
@@ -28,7 +28,7 @@ export const appConfig: ApplicationConfig = {
 
       // create auth token
       const auth = setContext((operation, context) => {
-        const token = Environment.STARTGG_API_KEY; 
+        const token = environment.STARTGG_API_KEY; 
 
         if (token === null) {
           return {};

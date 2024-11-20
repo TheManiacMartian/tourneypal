@@ -16,7 +16,7 @@ To setup this project for development, first:
 2. Navigate to the root of this project on your computer (tourneypal)
 3. Run the command `npm install` to install all dependencies needed.
 4. To connect your start.gg account, follow the instructions [to connect the API key](#startgg-api-connection). 
-5. Run the command `npm start` to run the program as a standalone application, this may take a few seconds.
+5. Run the command `npm start` to run the site locally with a java server for the backend, this may take a few seconds.
 6. Done!
 
 ## Start.gg API Connection

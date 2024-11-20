@@ -1,11 +1,35 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import {MatCardModule} from '@angular/material/card'
 import { CommonModule } from '@angular/common';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { StreamDataService } from '../stream-data.service';
+import { TourneyManager } from '../tourney-manager';
+import { Apollo, gql } from 'apollo-angular';
+import { query } from '@angular/animations';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+
+const STREAM_DATA_QUERY = gql`
+query StreamData($tourneySlug: String!, $eventSlug: String!){
+  tournament(slug: $tourneySlug){
+    name
+    events(
+      filter: {
+        slug: $eventSlug
+      }
+    ){
+      name
+    }
+  }
+}
+`
+
 
 @Component({
   selector: 'app-set-display',
   standalone: true,
-  imports: [MatCardModule, CommonModule],
+  imports: [MatCardModule, CommonModule, MatMiniFabButton, MatIconModule],
   templateUrl: './set-display.component.html',
   styleUrl: './set-display.component.scss'
 })
@@ -20,6 +44,11 @@ export class SetDisplayComponent implements OnInit{
   p1Score = '';
   p2Name = '';
   p2Score = '';
+
+  private snackBar = inject(MatSnackBar);
+
+
+  constructor(private readonly streamData: StreamDataService, private readonly apollo: Apollo){}
 
   ngOnInit(): void {
     this.getScoresFromSet();
@@ -82,6 +111,48 @@ export class SetDisplayComponent implements OnInit{
     
     
   }
-  
+
+  /** Set the stream data to match with this set */
+  uploadSet()
+  {
+    
+
+    // query data from tourney using tourney manager data
+    this.apollo.watchQuery({
+      query: STREAM_DATA_QUERY,
+      variables:{
+        "tourneySlug": TourneyManager.getTourneySlug(),
+        "eventSlug": TourneyManager.getEventSlug()
+      }
+    }).valueChanges.subscribe((result: any) => {
+      // make set data to send
+      const setData =
+      {
+        players: [
+          {
+              name: this.p1Name,
+              pronouns: "",
+              score: this.p1Score
+          },
+          {
+              name: this.p2Name,
+              pronouns: "",
+              score: this.p2Score
+          }
+        ],
+        tournament: result.data.tournament.name,
+        event: result.data.tournament.events[0].name,
+        round: this.set.fullRoundText,
+        bestOf: 3
+      }
+
+      this.streamData.updateSetData(setData).subscribe((value: any) => {
+        console.log(value);
+        this.snackBar.open("Updated data.", "Got it");
+      });
+    
+    });
+    
+  }
   
 }

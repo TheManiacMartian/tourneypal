@@ -74,6 +74,11 @@ export class TourneyManager{
         }
     }
 
+    public static getTourneySlug()
+    {
+        return this.tournamentSlug;
+    }
+
     public static getEventSlug()
     {
         return this.eventSlug;

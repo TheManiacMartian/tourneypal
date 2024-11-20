@@ -1,0 +1,20 @@
+{
+  "set": {
+    "players": [
+      {
+        "name": "Madnoah14",
+        "pronouns": "",
+        "score": "1"
+      },
+      {
+        "name": "LG | croosie",
+        "pronouns": "",
+        "score": "3"
+      }
+    ],
+    "tournament": "UofG Fall 2024 Week 7",
+    "event": "Ultimate Singles",
+    "round": "Winners Semi-Final",
+    "bestOf": 5
+  }
+}

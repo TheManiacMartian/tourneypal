@@ -4,7 +4,12 @@
             <h3 class="p1Name">{{p1Name}}</h3>
             <h1 class="p1Score">{{p1Score}}</h1>
         </div>
-        <p class="round">{{set.fullRoundText}}</p>
+        <div>
+            <p class="round">{{set.fullRoundText}}</p>
+            <div class="stream-button-container">
+                <button class="stream-button" (click)="uploadSet()"><mat-icon>podcasts</mat-icon></button>
+            </div>
+        </div>
         <div class="p2Display">
             <h3 class="p2Name">{{p2Name}}</h3>
             <h1 class="p2Score">{{p2Score}}</h1>
@@ -16,5 +21,10 @@
             <p>Set is empty.</p>
         </div>
     }
+
     
+    
+
 </div>
+
+

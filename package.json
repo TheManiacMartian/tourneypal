@@ -4,7 +4,6 @@
   "scripts": {
     "ng": "ng",
     "start": "concurrently \"ng serve\" \"json-server src/assets/data/streamdata.json --watch --port 3000\"",
-    "electron": "electron ./src/electron.dev",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -35,8 +34,6 @@
     "@angular/compiler-cli": "^18.2.10",
     "@types/jasmine": "~5.1.0",
     "concurrently": "^9.1.0",
-    "electron": "^33.0.2",
-    "electron-reloader": "^1.2.3",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

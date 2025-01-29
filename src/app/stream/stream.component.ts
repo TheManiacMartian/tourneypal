@@ -10,13 +10,6 @@ import { StreamDataService } from '../stream-data.service';
 import { FormGroup, FormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-interface StreamPlayerData
-{
-  name: string,
-  pronouns: string,
-  score: number
-}
-
 @Component({
   selector: 'app-stream',
   standalone: true,

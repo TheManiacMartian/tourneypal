@@ -1,0 +1,11 @@
+USEFUL COMMANDS:
+
+| Build Docker Image |
+
+docker build --no-cache -t tourneypal:whatever-version .
+
+You can have cache but I find it sometimes doesn't detect the changes I want it to.
+
+| Local serve |
+
+ng serve

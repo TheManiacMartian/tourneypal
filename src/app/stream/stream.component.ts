@@ -47,7 +47,7 @@ export class StreamComponent {
   {
     streamData.getSetData().then((setData) => {
       console.log("Recieved set data:", setData);
-      this.setData = setData;
+      this.setData = setData.set;
     });
   }
 
@@ -55,8 +55,33 @@ export class StreamComponent {
 
   updateSetData()
   {
+    // make set data to send
+    const newSetData =
+    {
+      set: 
+      {
+        players: [
+          {
+              name: this.setData.players[0].name,
+              pronouns: this.setData.players[0].pronouns,
+              score: this.setData.players[0].score
+          },
+          {
+            name: this.setData.players[1].name,
+            pronouns: this.setData.players[1].pronouns,
+            score: this.setData.players[1].score
+          }
+        ],
+        tournament: this.setData.tournament,
+        event: this.setData.event,
+        round: this.setData.round,
+        bestOf: 3
+      }
+      
+    }
+
     // upload the data to the json
-    this.streamData.updateSetData(this.setData).subscribe((response) => {
+    this.streamData.updateSetData(newSetData).then((response) => {
       console.log(response);
       this.snackBar.open("Updated data.", "Got it");
     })

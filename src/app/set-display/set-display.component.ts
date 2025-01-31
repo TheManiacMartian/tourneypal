@@ -115,8 +115,6 @@ export class SetDisplayComponent implements OnInit{
   /** Set the stream data to match with this set */
   uploadSet()
   {
-    
-
     // query data from tourney using tourney manager data
     this.apollo.watchQuery({
       query: STREAM_DATA_QUERY,
@@ -128,25 +126,29 @@ export class SetDisplayComponent implements OnInit{
       // make set data to send
       const setData =
       {
-        players: [
-          {
-              name: this.p1Name,
-              pronouns: "",
-              score: this.p1Score
-          },
-          {
-              name: this.p2Name,
-              pronouns: "",
-              score: this.p2Score
-          }
-        ],
-        tournament: result.data.tournament.name,
-        event: result.data.tournament.events[0].name,
-        round: this.set.fullRoundText,
-        bestOf: 3
+        set: 
+        {
+          players: [
+            {
+                name: this.p1Name,
+                pronouns: "",
+                score: this.p1Score
+            },
+            {
+                name: this.p2Name,
+                pronouns: "",
+                score: this.p2Score
+            }
+          ],
+          tournament: result.data.tournament.name,
+          event: result.data.tournament.events[0].name,
+          round: this.set.fullRoundText,
+          bestOf: 3
+        }
+        
       }
 
-      this.streamData.updateSetData(setData).subscribe((value: any) => {
+      this.streamData.updateSetData(setData).then((value: any) => {
         console.log(value);
         this.snackBar.open("Updated data.", "Got it");
       });
